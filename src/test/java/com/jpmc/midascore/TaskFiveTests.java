@@ -48,5 +48,6 @@ public class TaskFiveTests {
         }
         output.append("---end output ---");
         logger.info(output.toString());
+        logger.info("--------successfully completed--------------");
     }
 }

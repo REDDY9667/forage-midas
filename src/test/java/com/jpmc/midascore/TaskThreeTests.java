@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
+import com.jpmc.midascore.service.TransactionService;
 
 @SpringBootTest
 @DirtiesContext
@@ -14,6 +15,8 @@ import org.springframework.test.annotation.DirtiesContext;
 public class TaskThreeTests {
     static final Logger logger = LoggerFactory.getLogger(TaskThreeTests.class);
 
+    @Autowired
+    private TransactionService transactionService;
     @Autowired
     private KafkaProducer kafkaProducer;
 
@@ -37,6 +40,7 @@ public class TaskThreeTests {
         logger.info("----------------------------------------------------------");
         logger.info("----------------------------------------------------------");
         logger.info("use your debugger to find out what waldorf's balance is after all transactions are processed");
+        transactionService.printUserBalance("waldorf");
         logger.info("kill this test once you find the answer");
         while (true) {
             Thread.sleep(20000);
